@@ -1,6 +1,6 @@
 # StatusInsight
 
-Aplicación web para el seguimiento de la productividad hora a hora en las estaciones de prueba y del avance contra el plan de metas de producción. Lee el reporte *Hour Status for Production*, guarda el resultado del día y lo compara con el plan de metas por día, modelo y turno.
+Aplicación web para el seguimiento de la productividad hora a hora, avance contra el plan de metas de producción y resumen de ventas por periodo. Genera automaticamente los reportes y obtiene la informacion de ShoopFloor, guarda el resultado del día y lo compara con el plan de metas por día, modelo y turno.
 
 ## Vistas
 
@@ -12,9 +12,10 @@ Avance por turno de cada modelo contra su meta, con el cumplimiento y el delta d
 
 ### Meta semanal
 
-Rendimiento de un periodo (por omisión, de jueves a miércoles) con el concentrado del periodo, el cumplimiento por día, por modelo y por turno, y una tarjeta por modelo.
+Rendimiento de un periodo por modelo, el cumplimiento por día, por modelo y por turno.
 
-![Meta semanal](capturas/meta-semanal.png)
+<img width="1113" height="645" alt="image" src="https://github.com/user-attachments/assets/cfbc8ff7-8b66-4b49-8eef-0e454c0b3492" />
+
 
 ### Summary
 
