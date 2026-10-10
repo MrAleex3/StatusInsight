@@ -19,38 +19,36 @@ Rendimiento de un periodo por modelo, el cumplimiento por día, por modelo y por
 
 ### Summary
 
-El comprometido por tipo de venta y por semana, con las piezas y el dinero en el mismo bloque, a partir del commit, el plan de salidas, los embarques y el almacén.
+El comprometido por tipo de venta y por semana, con las unidades y la ganancia, a partir del commit, el plan de salidas, los embarques y unidades almacén.
 
 ![Summary](capturas/summary.png)
 
 ### Deltas del commit
 
-El commit contra lo embarcado, PN por PN y semana por semana, con el delta en piezas y en dinero y el faltante marcado en rojo.
+El commit contra lo embarcado, PN por PN y semana por semana, con el delta en unidades y en ganancia y el faltante marcado en rojo.
 
 ![Deltas del commit](capturas/deltas-commit.png)
 
 ## Características
 
 - Avance por turno: para cada modelo muestra lo empacado en cada turno contra su meta, con el cumplimiento y el delta del día.
-- Empacado por hora: detalle de las franjas de 2 horas del día por modelo.
-- Meta semanal: rendimiento de un periodo, con el concentrado, el cumplimiento por día, por modelo y por turno, y una tarjeta por modelo.
-- Summary: el comprometido por tipo de venta y por semana, en piezas y en dinero, con el interruptor para dejar fuera las transferencias entre plantas.
-- Deltas del commit: el commit contra lo embarcado, PN por PN y semana por semana, con el delta en piezas y en dinero.
-- Plan de metas: se carga desde el Excel de planning (DIA / MODELO / TURNO / QTY META) y es la referencia de todas las vistas.
+- Empacado por hora: resumen hora por hora del día por modelo.
+- Meta semanal: rendimiento de un periodo, con el concentrado, el cumplimiento por día, por modelo y por turno, y separados por modelo.
+- Summary: el comprometido por tipo de venta y por semana, en unidades y en ganancia, con un interruptor para dejar fuera las transferencias entre plantas.
+- Deltas del commit: el commit contra lo embarcado, PN por PN y semana por semana, con el delta en unidades y en ganancia.
+- Plan de metas: se carga desde el Excel de planning (DIA / MODELO / TURNO / QTY META) y se usa de base de todas las vistas.
 - Catálogo de modelos en el servidor: la lista se guarda una vez y alimenta todas las consultas.
-- Bitácora: registra quién consultó qué y cuándo, y cuántos modelos salieron con y sin información.
-- Roles: planeador (consulta y captura) y piso (solo consulta).
-- Edición con candado: un solo editor a la vez, con aviso de quién tiene el bloqueo y en qué vista.
+- Logs: registra quién consultó qué y cuándo, y modificaciones que hayan realizado.
+- Roles: Planner (consulta y captura) y produccion (solo consulta).
+- Edición con candado: solo puede haber un editor a la vez, con aviso de quién esta editando actualmente la informacion.
 - Exportación a Excel de lo que se está viendo y del periodo completo.
-- Estado del proveedor de datos en el pie del menú, para distinguir un hueco de "no se consultó" de un "no traía datos".
-- Interfaz con tema grafito y semáforo andón (verde, ámbar y rojo). Las gráficas son HTML, CSS y SVG, así que no dependen de librerías externas ni de internet.
 
 ## Requisitos
 
 - Python 3.9 o superior.
 - Flask, Waitress, Requests, BeautifulSoup, openpyxl y cryptography.
 - Acceso de red a las carpetas del sistema de producción.
-- Una base de cuentas SQLite para el control de accesos.
+- SQLite.
 
 ## Instalación y uso
 
@@ -61,18 +59,12 @@ El commit contra lo embarcado, PN por PN y semana por semana, con el delta en pi
    python StatusInsight.py
    ```
 
-3. Abre `http://<ip-de-la-maquina>:10004`.
-
-El puerto por omisión es 10004.
-
 ## Roles
 
 | Rol | Permisos |
 | --- | --- |
-| planeador | Consulta, carga el plan de metas y captura valores |
-| piso | Consulta el tablero completo, sin escribir |
-
-Una cuenta sin rol asignado hereda el permiso mínimo (piso).
+| Planner | Consulta, carga el plan de metas y captura valores |
+| produccion | Consulta el tablero completo, sin escribir |
 
 ## Estructura del proyecto
 
@@ -87,7 +79,7 @@ StatusInsight/
 
 ## Licencia
 
-Software propietario de uso interno. El acceso requiere una licencia firmada: la aplicación verifica la firma y la máquina en cada arranque.
+Software propietario de uso interno. El acceso requiere una licencia firmada.
 
 ## Autor
 
