@@ -42,6 +42,17 @@ StatusInsight nació como una vista dentro de FVS Monitor, dedicada al reporte h
 | Planeador | Consulta, carga el plan de metas y captura valores |
 | Producción | Consulta el tablero completo, sin escribir |
 
+**Estructura del proyecto**
+
+```text
+StatusInsight/
+├── StatusInsight.py      # servidor Flask y lógica del reporte
+├── bases.py              # acceso a las bases SQLite
+├── licencia.py           # verificación de la licencia de uso
+├── templates/            # login y tablero
+└── static/               # CSS, JS y fuentes
+```
+
 ## Características
 
 - Avance por turno: para cada modelo muestra lo empacado en cada turno contra su meta, con el cumplimiento y el delta del día.
