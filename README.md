@@ -1,33 +1,46 @@
 # StatusInsight
 
-Aplicación web para el seguimiento de la productividad hora a hora, avance contra el plan de metas de producción y resumen de ventas por periodo. Genera automaticamente los reportes y obtiene la informacion de ShoopFloor, guarda el resultado del día y lo compara con el plan de metas por día, modelo y turno.
+Aplicación web para el seguimiento de la productividad hora a hora, el avance contra el plan de metas de producción y el resumen de ventas por periodo. Obtiene la información de Shopfloor, guarda el resultado del día y lo compara con el plan de metas por día, modelo y turno.
 
-## Vistas
+![Python](https://img.shields.io/badge/Python-3.9%2B-blue)
+![Flask](https://img.shields.io/badge/Framework-Flask-green)
+![Server](https://img.shields.io/badge/Server-Waitress-red)
+![Status](https://img.shields.io/badge/Status-Production-success)
 
-### Meta diaria
+- [Interfaz y funcionalidades](Funcionalidades.md)
 
-Avance por turno de cada modelo contra su meta, con el cumplimiento y el delta del día, y el detalle del empacado por franja de 2 horas.
+![Vista principal](capturas/meta-diaria.png)
 
-![Meta diaria](capturas/meta-diaria.png)
+## Origen del proyecto
 
-### Meta semanal
+StatusInsight nació como una vista dentro de FVS Monitor, dedicada al reporte horario de producción. Con el tiempo creció hasta separarse en su propia aplicación web, para que no cargara con el dashboard ni el dashboard con ella.
 
-Rendimiento de un periodo por modelo, el cumplimiento por día, por modelo y por turno.
+## Puesta en marcha
 
-<img width="1113" height="645" alt="image" src="https://github.com/user-attachments/assets/cfbc8ff7-8b66-4b49-8eef-0e454c0b3492" />
+**Requisitos**
 
+- Python 3.9 o superior.
+- Flask, Waitress, Requests, BeautifulSoup, openpyxl y cryptography.
+- Acceso de red a las carpetas del sistema de producción.
+- SQLite.
 
-### Summary
+**Instalación y uso**
 
-El comprometido por tipo de venta y por semana, con las unidades y la ganancia, a partir del commit, el plan de salidas, los embarques y unidades almacén.
+1. Instala las dependencias.
+2. Ejecuta la aplicación:
 
-![Summary](capturas/summary.png)
+   ```
+   python StatusInsight.py
+   ```
 
-### Deltas del commit
+3. Abre `http://<ip-de-la-maquina>:10004`.
 
-El commit contra lo embarcado, PN por PN y semana por semana, con el delta en unidades y en ganancia y el faltante marcado en rojo.
+**Acceso**
 
-![Deltas del commit](capturas/deltas-commit.png)
+| Rol | Permisos |
+| --- | --- |
+| Planeador | Consulta, carga el plan de metas y captura valores |
+| Producción | Consulta el tablero completo, sin escribir |
 
 ## Características
 
@@ -38,48 +51,9 @@ El commit contra lo embarcado, PN por PN y semana por semana, con el delta en un
 - Deltas del commit: el commit contra lo embarcado, PN por PN y semana por semana, con el delta en unidades y en ganancia.
 - Plan de metas: se carga desde el Excel de planning (DIA / MODELO / TURNO / QTY META) y se usa de base de todas las vistas.
 - Catálogo de modelos en el servidor: la lista se guarda una vez y alimenta todas las consultas.
-- Logs: registra quién consultó qué y cuándo, y modificaciones que hayan realizado.
-- Roles: Planner (consulta y captura) y produccion (solo consulta).
-- Edición con candado: solo puede haber un editor a la vez, con aviso de quién esta editando actualmente la informacion.
+- Logs: registra quién consultó qué y cuándo, y las modificaciones que se hayan realizado.
+- Edición con candado: solo puede haber un editor a la vez, con aviso de quién está editando actualmente la información.
 - Exportación a Excel de lo que se está viendo y del periodo completo.
-
-## Requisitos
-
-- Python 3.9 o superior.
-- Flask, Waitress, Requests, BeautifulSoup, openpyxl y cryptography.
-- Acceso de red a las carpetas del sistema de producción.
-- SQLite.
-
-## Instalación y uso
-
-1. Instala las dependencias.
-2. Ejecuta la aplicación:
-
-   ```
-   python StatusInsight.py
-   ```
-
-## Roles
-
-| Rol | Permisos |
-| --- | --- |
-| Planner | Consulta, carga el plan de metas y captura valores |
-| produccion | Consulta el tablero completo, sin escribir |
-
-## Estructura del proyecto
-
-```text
-StatusInsight/
-├── StatusInsight.py      # servidor Flask y lógica del reporte
-├── bases.py              # acceso a las bases SQLite
-├── licencia.py           # verificación de la licencia de uso
-├── templates/            # login y tablero
-└── static/               # CSS, JS y fuentes
-```
-
-## Licencia
-
-Software propietario de uso interno. El acceso requiere una licencia firmada.
 
 ## Autor
 
