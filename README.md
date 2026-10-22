@@ -13,7 +13,7 @@ Aplicación web para el seguimiento de la productividad hora a hora, el avance c
 
 ## Origen del proyecto
 
-StatusInsight nació como una vista dentro de FVS Monitor, dedicada al reporte horario de producción. Con el tiempo creció hasta separarse en su propia aplicación web, para que no cargara con el dashboard ni el dashboard con ella.
+StatusInsight nació como sugerencia de Diego Flores de tener una app dedicada al reporte horario de producción. Con el tiempo creció hasta separarse en su propia aplicación web.
 
 ## Puesta en marcha
 
@@ -21,7 +21,6 @@ StatusInsight nació como una vista dentro de FVS Monitor, dedicada al reporte h
 
 - Python 3.9 o superior.
 - Flask, Waitress, Requests, BeautifulSoup, openpyxl y cryptography.
-- Acceso de red a las carpetas del sistema de producción.
 - SQLite.
 
 **Instalación y uso**
@@ -39,6 +38,7 @@ StatusInsight nació como una vista dentro de FVS Monitor, dedicada al reporte h
 
 | Rol | Permisos |
 | --- | --- |
+| PM | Consulta, carga el plan, commits, precios y captura valores |
 | Planeador | Consulta, carga el plan de metas y captura valores |
 | Producción | Consulta el tablero completo, sin escribir |
 
